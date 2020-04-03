@@ -15,10 +15,16 @@
 	<description>Adatb. alapú projektmunka</description>
 
 	<properties>
-		<java.version>14</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
+		<!-- Oracle jdbc-->
+		<dependency>
+		<groupId>com.oracle.ojdbc</groupId>
+		<artifactId>ojdbc8</artifactId>
+		<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
