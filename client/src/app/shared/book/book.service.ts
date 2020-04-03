@@ -15,10 +15,6 @@ export class BookService {
 
 
   getAll() : Observable<any>{
-    return this.http.get<any[]>('//localhost:8081/books').pipe(
-      map((result:any) =>{
-        return result._embedded.books;
-      })
-    );
+    return this.http.get('//localhost:8081/api/books');
   }
 }

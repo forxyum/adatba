@@ -15,16 +15,5 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@Bean
-	ApplicationRunner init(BookRepository repository) {
-		return args -> {
-			Stream.of("Ferrari", "Jaguar", "Porsche", "Lamborghini", "Bugatti",
-					"AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV").forEach(title -> {
-				Book book = new Book();
-				book.setTitle(title);
-				repository.save(book);
-			});
-			repository.findAll().forEach(System.out::println);
-		};
-	}
+
 }
