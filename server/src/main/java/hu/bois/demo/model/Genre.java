@@ -3,16 +3,15 @@ package hu.bois.demo.model;
 import hu.bois.demo.model.identifier.GenreId;
 import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="genre")
 @IdClass(GenreId.class)
 public class Genre {
+    @Column(name="book_id")
     @Id private @NonNull Long bookId;
+    @Column(name="genre")
     @Id private @NonNull String genre;
 
     public Genre(@NonNull Long bookId, @NonNull String genre) {

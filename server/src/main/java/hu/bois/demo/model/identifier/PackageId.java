@@ -1,15 +1,18 @@
 package hu.bois.demo.model.identifier;
 
+import hu.bois.demo.model.Book;
+import hu.bois.demo.model.Supply;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 public class PackageId implements Serializable {
-    private Long supplyId;
-    private Long bookId;
+    private Supply supply;
+    private Book book;
 
-    public PackageId(Long supplyId, Long bookId) {
-        this.supplyId = supplyId;
-        this.bookId = bookId;
+    public PackageId(Supply supply, Book book) {
+        this.supply = supply;
+        this.book = book;
     }
 
     public PackageId() {
@@ -20,12 +23,12 @@ public class PackageId implements Serializable {
         if (this == o) return true;
         if (!(o instanceof PackageId)) return false;
         PackageId packageId = (PackageId) o;
-        return supplyId.equals(packageId.supplyId) &&
-                bookId.equals(packageId.bookId);
+        return supply.equals(packageId.supply) &&
+                book.equals(packageId.book);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(supplyId, bookId);
+        return Objects.hash(supply, book);
     }
 }

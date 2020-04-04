@@ -9,6 +9,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +30,17 @@ public class PurchaseController {
     }
 
     //TODO: get by customer + puchase time
+    @GetMapping("purchases/{customer}/{time}")
+    public ResponseEntity<List<Purchase>> getPurchasesByCustomerAndTime(@PathVariable(value = "customer") String username,@PathVariable(value="time") Timestamp time) throws ResourceNotFoundException {
+        List<Purchase> purchases = repository.getPurchaseByCustomerAndTime(username,time);
+        return ResponseEntity.ok().body(purchases);
+    }
+    @GetMapping("purchases/{customer}")
+    public ResponseEntity<List<Purchase>> getPurchasesByCustomer(@PathVariable(value="customer") String username){
+        List<Purchase> purchases = repository.getPurchasesByCustomer(username);
+        return ResponseEntity.ok().body(purchases);
+    }
+
     @PostMapping("/purchases")
     public Purchase createPurchase(Purchase pur) {
         return repository.save(pur);

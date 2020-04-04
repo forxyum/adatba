@@ -4,17 +4,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="store")
 public class Store {
+    @Column(name="address")
     @Id private @NonNull String address;
+    @Column(name="profit")
     private @NonNull int profit;
+    @Column(name="name")
     private @NonNull String name;
 
     public Store(@NonNull String address, @NonNull int profit, @NonNull String name) {

@@ -3,19 +3,20 @@ package hu.bois.demo.model;
 import hu.bois.demo.model.identifier.ContractId;
 import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="contract")
 @IdClass(ContractId.class)
 public class Contract {
+    @Column(name="supplier_username")
     @Id private @NonNull String supplierUsername;
+    @Column(name="company_tax")
     @Id private @NonNull int companyTax;
+    @Column(name="start_date")
     private @NonNull Date startDate;
+    @Column(name="end_date")
     private @NonNull Date endDate;
 
     public Contract(@NonNull String supplierUsername, @NonNull int companyTax, @NonNull Date startDate, @NonNull Date endDate) {

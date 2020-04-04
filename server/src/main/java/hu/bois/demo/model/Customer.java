@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,10 +13,15 @@ import java.util.Date;
 @Entity
 @Table(name="customer")
 public class Customer {
-    @Id private @NonNull String username;
+    @Id @Column(name="username")
+    private @NonNull String username;
+    @Column(name="password")
     private @NonNull String password;
+    @Column(name="email")
     private @NonNull String email;
+    @Column(name="birthDate")
     private @NonNull Date birthDate;
+    @Column(name="address")
     private @NonNull String address;
 
     public Customer(@NonNull String username, @NonNull String password, @NonNull String email, @NonNull Date birthDate, @NonNull String address) {

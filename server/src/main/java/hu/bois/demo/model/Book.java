@@ -2,34 +2,49 @@ package hu.bois.demo.model;
 
 import lombok.*;
 
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
+import hu.bois.demo.model.Package;
 
 @Entity
 @Table(name = "book")
 public class Book {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private Long id;
+    @Column(name = "title")
     private @NonNull String title;
+    @Column(name = "publisher")
     private @NonNull String publisher;
+    @Column(name = "year")
     private Date year;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Package> packages;
 
     public Book(String title, String publisher) {
         this.title = title;
         this.publisher = publisher;
     }
-    public Book(String title, String publisher,Date year) {
+
+    public Book(String title, String publisher, Date year) {
         this.title = title;
         this.publisher = publisher;
         this.year = year;
     }
-    public Book(){
+
+    public Book() {
 
     }
 
+    public Book(Long id, Date year, List<Package> packages) {
+        this.id = id;
+        this.year = year;
+        this.packages = packages;
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -61,5 +76,13 @@ public class Book {
 
     public void setYear(Date year) {
         this.year = year;
+    }
+
+    public List<Package> getPackages() {
+        return packages;
+    }
+
+    public void setPackages(List<Package> packages) {
+        this.packages = packages;
     }
 }

@@ -3,18 +3,20 @@ package hu.bois.demo.model;
 import hu.bois.demo.model.identifier.PriceId;
 import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="price")
 @IdClass(PriceId.class)
 public class Price {
+    @Column(name="book_id")
+
     @Id private @NonNull Long bookId;
+    @Column(name="wholesale")
     private @NonNull int wholesale;
+    @Column(name="sale")
     private @NonNull int sale;
+    @Column(name="store_address")
     @Id private @NonNull String storeAddress;
 
     public Price(@NonNull Long bookId, @NonNull int wholesale, @NonNull int sale, @NonNull String storeAddress) {

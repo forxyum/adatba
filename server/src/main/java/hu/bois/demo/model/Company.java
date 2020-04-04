@@ -2,6 +2,7 @@ package hu.bois.demo.model;
 
 import lombok.NonNull;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,8 +10,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="company")
 public class Company {
+    @Column(name="tax_number")
     @Id private @NonNull int taxNumber;
+    @Column(name="profit")
     private @NonNull Long profit;
+    @Column(name="name")
     private @NonNull String name;
 
     public Company(@NonNull int taxNumber, @NonNull Long profit, @NonNull String name) {

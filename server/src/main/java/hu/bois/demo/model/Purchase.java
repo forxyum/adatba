@@ -3,24 +3,27 @@ package hu.bois.demo.model;
 import hu.bois.demo.model.identifier.PurchaseId;
 import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name="purchase")
 @IdClass(PurchaseId.class)
 public class Purchase {
+    @Column(name="customer")
     @Id private @NonNull String customer;
+    @Column(name="book_id")
     @Id private @NonNull Long bookId;
-    private @NonNull int amount;
+    @Column(name="amount")
+    private @NonNull Integer amount;
+    @Column(name="purchase_time")
     @Id private @NonNull Timestamp purchaseTime;
+    @Column(name="address")
     private @NonNull String address;
+    @Column(name="delivery")
     private  @NonNull Boolean delivery;
 
-    public Purchase(@NonNull String customer, @NonNull Long bookId, @NonNull int amount, @NonNull Timestamp purchaseTime, @NonNull String address, @NonNull Boolean delivery) {
+    public Purchase(@NonNull String customer, @NonNull Long bookId, @NonNull Integer amount, @NonNull Timestamp purchaseTime, @NonNull String address, @NonNull Boolean delivery) {
         this.customer = customer;
         this.bookId = bookId;
         this.amount = amount;
@@ -48,11 +51,11 @@ public class Purchase {
         this.bookId = book_id4;
     }
 
-    public int getAmount() {
+    public @NonNull Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(@NonNull Integer amount) {
         this.amount = amount;
     }
 

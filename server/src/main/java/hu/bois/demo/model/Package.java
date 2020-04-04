@@ -3,42 +3,49 @@ package hu.bois.demo.model;
 import hu.bois.demo.model.identifier.PackageId;
 import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name="package")
+@Table(name = "package")
 @IdClass(PackageId.class)
 public class Package {
-    @Id private @NonNull Long supplyId;
-    @Id private @NonNull Long bookId;
-    private @NonNull int amount;
+    @Id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id")
+    private Book book;
 
-    public Package(@NonNull Long supplyId, @NonNull Long bookId, @NonNull int amount) {
-        this.supplyId = supplyId;
-        this.bookId = bookId;
-        this.amount = amount;
-    }
+    @Id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "supply_id")
+    private Supply supply;
+
+    @Column(name = "amount")
+    private @NonNull int amount;
 
     public Package() {
     }
 
-    public Long getSupplyId() {
-        return supplyId;
+    public Package(Book book, Supply supp, @NonNull int amount) {
+        this.book = book;
+        this.supply = supp;
+        this.amount = amount;
     }
 
-    public void setSupplyId(Long supply_id) {
-        this.supplyId = supply_id;
+    public Book getBook() {
+        return book;
     }
 
-    public Long getBookId() {
-        return bookId;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
-    public void setBookId(Long book_id2) {
-        this.bookId = book_id2;
+    public Supply getSupply() {
+        return supply;
+    }
+
+    public void setSupply(Supply supp) {
+        this.supply = supp;
     }
 
     public int getAmount() {
@@ -48,4 +55,6 @@ public class Package {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+
 }

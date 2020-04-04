@@ -3,16 +3,15 @@ package hu.bois.demo.model;
 import hu.bois.demo.model.identifier.AuthorId;
 import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="author")
 @IdClass(AuthorId.class)
 public class Author {
+    @Column(name="book_id")
     @Id private @NonNull Long bookId;
+    @Column(name="author")
     @Id private @NonNull String author;
 
     public Author(Long id,String author){
