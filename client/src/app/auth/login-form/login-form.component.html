@@ -1,0 +1,31 @@
+<section *ngIf='role'>
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field>
+            <input type="text" matInput placeholder="Username" ngModel name="username" required #username="ngModel">
+        </mat-form-field>
+        <mat-form-field>
+            <input type="password" matInput placeholder="Your password" ngModel name="password" password required #password="ngModel">
+        </mat-form-field>
+        <button *ngIf="customer" type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Login</button>
+        <button *ngIf="!customer" type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Login</button>
+    </form>
+</section>
+<section *ngIf='!role' class="signup-form" fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex.xs="100%" fxFlex="400px">
+        <mat-card-content fxLayoutAlign="center">
+            <mat-form-field>
+                <mat-select placeholder="Select one" [(value)]="selected">
+                    <mat-option value="customer">
+                        Customer
+                    </mat-option>
+                    <mat-option value="supplier">
+                        Supplier
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="center">
+            <button type="submit" mat-button (click)="onRoleSelected()">Send</button>
+        </mat-card-actions>
+    </mat-card>
+</section>

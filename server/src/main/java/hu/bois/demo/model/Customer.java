@@ -19,7 +19,7 @@ public class Customer {
     private @NonNull String password;
     @Column(name="email")
     private @NonNull String email;
-    @Column(name="birthDate")
+    @Column(name="birthdate")
     private @NonNull Date birthDate;
     @Column(name="address")
     private @NonNull String address;

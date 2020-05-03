@@ -1,19 +1,13 @@
 package hu.bois.demo.model.identifier;
 
-import hu.bois.demo.model.Book;
-import hu.bois.demo.model.Supply;
-
 import java.io.Serializable;
 import java.util.Objects;
 
 public class PackageId implements Serializable {
-    private Supply supply;
-    private Book book;
+    private Long supply;
+    private Long book;
 
-    public PackageId(Supply supply, Book book) {
-        this.supply = supply;
-        this.book = book;
-    }
+
 
     public PackageId() {
     }
@@ -30,5 +24,21 @@ public class PackageId implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(supply, book);
+    }
+
+    public Long getSupply() {
+        return supply;
+    }
+
+    public void setSupply(Long supply) {
+        this.supply = supply;
+    }
+
+    public Long getBook() {
+        return book;
+    }
+
+    public void setBook(Long book) {
+        this.book = book;
     }
 }

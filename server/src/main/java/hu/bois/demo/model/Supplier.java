@@ -19,7 +19,7 @@ public class Supplier {
     private @NonNull String password;
     @Column(name="email")
     private @NonNull String email;
-    @Column(name="birthDate")
+    @Column(name="birthdate")
     private @NonNull Date birthDate;
     @Column(name="balance")
     private @NonNull int balance;

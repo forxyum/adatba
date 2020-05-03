@@ -1,0 +1,14 @@
+mat-grid-list {
+    padding: 20px;
+}
+
+.tile>::ng-deep .mat-figure {
+    align-items: flex-start;
+}
+
+mat-card img {
+    object-fit: cover;
+    width: 250px;
+    height: 400px;
+    border: 10px solid #313131;
+}

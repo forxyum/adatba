@@ -1,0 +1,26 @@
+<mat-grid-list cols=1 rowHeight="200px">
+    <mat-grid-tile *ngFor="let item of items; let index=index" class=tile>
+        <mat-card class=imgcard>
+            <img mat-card-image src="http://localhost:8081/books/{{item}}/pic">
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{books[index]?.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                {{prices[index]?.sale}} EUR <br> from {{stores[index]?.name}}
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-actions>
+                <p style="font-size:30px">{{counter.get(cart2[index])}}</p>
+                <button mat-button (click)="add(cart[index],books[index].id)">Add</button>
+                <button mat-button (click)="deleteItem(cart[index])">Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
+<div style="border:1px solid black;width:100px;margin:20px;padding:10px">Your total:<br>{{total}}</div>
+<mat-checkbox [(ngModel)]="homedelivery">Home delivery</mat-checkbox>
+
+<button mat-button (click)="submit()">Submit</button>

@@ -8,10 +8,12 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins ="http://localhost:4200")
 @RestController
 public class SupplierController {
     @Autowired
@@ -35,7 +37,7 @@ public class SupplierController {
     }
 
     @PostMapping("/suppliers")
-    public Supplier createSupplier(Supplier supp) {
+    public Supplier createSupplier(@Valid @RequestBody Supplier supp) {
         return repository.save(supp);
     }
 }

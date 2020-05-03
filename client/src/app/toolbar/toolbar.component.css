@@ -1,0 +1,23 @@
+a:hover,
+a:active {
+    color: lightgray;
+    cursor: pointer;
+}
+
+.navigation-items {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.form-control::placeholder {
+    font-family: FontAwesome;
+}
+
+.form-control {
+    height: 30px;
+    width: 200px;
+}

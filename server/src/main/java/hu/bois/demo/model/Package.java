@@ -1,58 +1,57 @@
 package hu.bois.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import hu.bois.demo.model.identifier.PackageId;
 import lombok.NonNull;
 
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "package")
 @IdClass(PackageId.class)
-public class Package {
+public class Package{
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id")
-    private Book book;
+    @Column(name = "book_id")
+    private Long book;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "supply_id")
-    private Supply supply;
+    @Column(name = "supply_id")
+    private Long supply;
 
     @Column(name = "amount")
-    private @NonNull int amount;
+    private @NonNull Long amount;
 
     public Package() {
     }
 
-    public Package(Book book, Supply supp, @NonNull int amount) {
+    public Package(Long book, Long supp, @NonNull Long amount) {
         this.book = book;
         this.supply = supp;
         this.amount = amount;
     }
 
-    public Book getBook() {
+    public Long getBook() {
         return book;
     }
 
-    public void setBook(Book book) {
+    public void setBook(Long book) {
         this.book = book;
     }
 
-    public Supply getSupply() {
+    public Long getSupply() {
         return supply;
     }
 
-    public void setSupply(Supply supp) {
-        this.supply = supp;
+    public void setSupply(Long supply) {
+        this.supply = supply;
     }
 
-    public int getAmount() {
+    public @NonNull Long getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(@NonNull Long amount) {
         this.amount = amount;
     }
 

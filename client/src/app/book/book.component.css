@@ -1,0 +1,20 @@
+mat-card img {
+    object-fit: cover;
+    width: 375px;
+    height: 600px;
+    border: 10px solid #313131;
+}
+
+.info> ::ng-deep figure {
+    justify-content: flex-start !important;
+}
+
+.book> ::ng-deep figure {
+    justify-content: flex-end !important;
+}
+
+mat-card-content div,
+mat-card-content li {
+    font-size: 20px;
+    line-height: 30px;
+}

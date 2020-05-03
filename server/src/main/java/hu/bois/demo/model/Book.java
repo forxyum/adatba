@@ -1,10 +1,12 @@
 package hu.bois.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import hu.bois.demo.model.Package;
 
@@ -22,12 +24,17 @@ public class Book {
     @Column(name = "year")
     private Date year;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Package> packages;
+    @Lob
+    @Column(name="pic")
+    private byte[] pic;
+
 
     public Book(String title, String publisher) {
         this.title = title;
         this.publisher = publisher;
+    }
+    public Book(Long id){
+        this.id = id;
     }
 
     public Book(String title, String publisher, Date year) {
@@ -36,14 +43,28 @@ public class Book {
         this.year = year;
     }
 
+    public Book(@NonNull String title, @NonNull String publisher, Date year, byte[] pic) {
+        this.title = title;
+        this.publisher = publisher;
+        this.year = year;
+        this.pic = pic;
+    }
+
     public Book() {
 
     }
 
-    public Book(Long id, Date year, List<Package> packages) {
-        this.id = id;
-        this.year = year;
-        this.packages = packages;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+        Book book = (Book) o;
+        return id.equals(book.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     public void setTitle(String title) {
@@ -78,11 +99,11 @@ public class Book {
         this.year = year;
     }
 
-    public List<Package> getPackages() {
-        return packages;
+    public byte[] getPic() {
+        return pic;
     }
 
-    public void setPackages(List<Package> packages) {
-        this.packages = packages;
+    public void setPic(byte[] pic) {
+        this.pic = pic;
     }
 }

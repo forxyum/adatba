@@ -1,5 +1,9 @@
-<div style="text-align:center">
-  <h2>asd</h2>
-</div>
-<app-book-list></app-book-list>
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side">
+        <app-sidenav (closeEmitter)="sidenav.close()"></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-toolbar (toggleEmitter)="sidenav.toggle()"></app-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

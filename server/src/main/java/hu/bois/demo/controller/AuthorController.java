@@ -1,7 +1,6 @@
 package hu.bois.demo.controller;
 
 import hu.bois.demo.model.Author;
-import hu.bois.demo.model.Book;
 import hu.bois.demo.model.identifier.AuthorId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -10,10 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import hu.bois.demo.repository.AuthorRepository;
 
 import javax.validation.Valid;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
+@CrossOrigin(origins ="http://localhost:4200")
 @RestController
 public class AuthorController {
     @Autowired
@@ -34,6 +32,10 @@ public class AuthorController {
         Author auth = repository.findById(new AuthorId(bookId, author))
                 .orElseThrow(() -> new ResourceNotFoundException("Author not found"));
         return ResponseEntity.ok().body(auth);
+    }
+    @GetMapping("/authors/{bookId}")
+    public List<Author> getAuthorsByBookId(@PathVariable(value="bookId") Long id){
+        return repository.findAuthorByBookId(id);
     }
 
     @PostMapping("/authors")

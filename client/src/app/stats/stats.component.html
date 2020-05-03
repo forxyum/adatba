@@ -1,0 +1,61 @@
+<section fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex.xs="100%" fxFlex="400px">
+        <mat-card-content fxLayoutAlign="center">
+            <mat-form-field>
+                <mat-select placeholder="Select one" [(value)]="selected">
+                    <mat-option value="bookpergenre">
+                        Book/genre
+                    </mat-option>
+                    <mat-option value="authorperbook">
+                        Author/book
+                    </mat-option>
+                    <mat-option value="avgprice">
+                        Average price of books
+                    </mat-option>
+                    <mat-option value="avgwhole">
+                        Average wholesale price of books
+                    </mat-option>
+                    <mat-option value="morethanavg">
+                        Number of books that are more expensive than average
+                    </mat-option>
+                    <mat-option value="sumofspent">
+                        Total spending per customer
+                    </mat-option>
+                    <mat-option value="sumofspentper">
+                        Total spending per customer per store
+                    </mat-option>
+                    <mat-option value="employeeper">
+                        Employee per company
+                    </mat-option>
+                    <mat-option value="bookspercust">
+                        Number of books bought per customer
+                    </mat-option>
+                    <mat-option value="stockperstore">
+                        Total stock per store
+                    </mat-option>
+                    <mat-option value="mostauth">
+                        Book with the most authors
+                    </mat-option>
+                    <mat-option value="mostgenre">
+                        Book with the most genres
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="center">
+            <button type="submit" mat-button (click)="onSelected()">Send</button>
+        </mat-card-actions>
+    </mat-card>
+</section>
+<table *ngIf="pressed">
+    <th *ngFor="let column of columns">
+        {{column}}
+    </th>
+    <tbody>
+        <tr *ngFor="let row of data" class="row100 body">
+            <td *ngFor="let column of columns;let index=index ">
+                {{row[index]}}
+            </td>
+        </tr>
+    </tbody>
+</table>

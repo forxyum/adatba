@@ -1,0 +1,52 @@
+<section *ngIf='role' class="signup-form">
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field hintLabel="Should be at least 6 characters long.">
+            <input type="text" matInput placeholder="Username" ngModel name="username" required minlength="6" #username="ngModel">
+            <mat-hint align="end">{{ username.value?.length }} / 6</mat-hint>
+            <mat-error>Has to be at least 6 characters long.</mat-error>
+        </mat-form-field>
+        <mat-form-field hintLabel="Should be at least 6 characters long.">
+            <input type="password" matInput placeholder="Your password" ngModel name="password" password required minlength="6" #password="ngModel">
+            <mat-hint align="end">{{ password.value?.length }} / 6</mat-hint>
+            <mat-error>Has to be at least 6 characters long.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="email" matInput placeholder="Your email" ngModel name="email" email required #email="ngModel">
+            <mat-error *ngIf="email.hasError('required')">Field must not be empty.</mat-error>
+            <mat-error *ngIf="!email.hasError('required')">E-Mail is invalid.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Your birthdate" [matDatepicker]="picker" [max]="maxDate" ngModel name="birthDate" required #birthDate="ngModel">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field *ngIf='role=="customer"'>
+            <input matInput placeholder="Your address" ngModel name="address" required #address="ngModel">
+            <mat-error *ngIf="address.hasError('required')">Field must not be empty.</mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf='role=="supplier"'>
+            <input type="text" matInput placeholder="Balance" ngModel name="balance" required #balance="ngModel">
+        </mat-form-field>
+        <mat-checkbox required color="primary">Agree to Terms and Conditions.</mat-checkbox>
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+    </form>
+</section>
+<section *ngIf='!role' class="signup-form" fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex.xs="100%" fxFlex="400px">
+        <mat-card-content fxLayoutAlign="center">
+            <mat-form-field>
+                <mat-select placeholder="Select one" [(value)]="selected">
+                    <mat-option value="customer">
+                        Customer
+                    </mat-option>
+                    <mat-option value="supplier">
+                        Supplier
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="center">
+            <button type="submit" mat-button (click)="onRoleSelected()">Send</button>
+        </mat-card-actions>
+    </mat-card>
+</section>

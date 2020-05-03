@@ -9,11 +9,12 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins ="http://localhost:4200")
 @RestController
 public class PurchaseController {
     @Autowired
@@ -42,7 +43,7 @@ public class PurchaseController {
     }
 
     @PostMapping("/purchases")
-    public Purchase createPurchase(Purchase pur) {
+    public Purchase createPurchase(@Valid @RequestBody Purchase pur) {
         return repository.save(pur);
     }
 }

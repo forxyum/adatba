@@ -1,10 +1,12 @@
 package hu.bois.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.NonNull;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="supply")
@@ -19,7 +21,9 @@ public class Supply {
     @Column(name="supply_date")
     private @NonNull Date supplyDate;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany
+    @JsonBackReference
+    @JoinColumn(name="supply_id")
     private List<Package> packages;
 
 
@@ -29,7 +33,25 @@ public class Supply {
         this.supplyDate = supplyDate;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Supply)) return false;
+        Supply supply = (Supply) o;
+        return id.equals(supply.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
     public Supply() {
+
+    }
+
+    public Supply(Long id){
+        this.id = id;
     }
 
     public Long getId() {

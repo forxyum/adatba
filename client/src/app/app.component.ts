@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
+  openSidenav = false;
+  displayCatalog: boolean = false;
+
+
+  toggleCatalog(){
+    this.displayCatalog = !this.displayCatalog;
+  }
 }

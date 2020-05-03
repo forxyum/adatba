@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins ="http://localhost:4200")
 @RestController
 public class CompanyController {
     @Autowired

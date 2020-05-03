@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins ="http://localhost:4200")
 @RestController
 public class GenreController {
     @Autowired
@@ -22,7 +22,6 @@ public class GenreController {
     }
 
     @GetMapping("/genres")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<Genre> getAllGenres() {
         return repository.findAll();
     }
@@ -32,5 +31,10 @@ public class GenreController {
     @PostMapping("/genres")
     public Genre createGenre(Genre gen) {
         return repository.save(gen);
+    }
+
+    @GetMapping("/genres/{bookId}")
+    public List<Genre> getGenresByBookId(@PathVariable(value="bookId") Long id){
+        return repository.findGenreByBookId(id);
     }
 }

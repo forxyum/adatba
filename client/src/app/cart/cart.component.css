@@ -1,0 +1,44 @@
+mat-card img {
+    object-fit: cover;
+    width: 105px;
+    height: 163px;
+    border: 10px solid #313131;
+}
+
+.imgcard {
+    width: 94px;
+    height: 150px;
+}
+
+mat-card {
+    height: 150px;
+    font-size: 40px;
+    vertical-align: middle;
+}
+
+mat-card-title {
+    font-weight: bold;
+}
+
+mat-grid-list {
+    margin: 20px;
+}
+
+mat-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+.tile>::ng-deep .mat-figure {
+    justify-content: flex-start;
+}
+
+mat-checkbox {
+    margin: 30px;
+}
+
+.total {
+    width: 60px;
+}
