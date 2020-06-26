@@ -18,8 +18,8 @@ import { BookComponent } from './book/book.component';
 import { CartComponent } from './cart/cart.component';
 import { BookAddComponent } from './book-add/book-add.component';
 import { SearchComponent } from './search/search.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchPipe } from './search/search-pipe';
+import { MatSelectModule } from '@angular/material/select';
 import { StatsComponent } from './stats/stats.component';
 
 @NgModule({
@@ -34,8 +34,8 @@ import { StatsComponent } from './stats/stats.component';
     CartComponent,
     BookAddComponent,
     SearchComponent,
-    SearchPipe,
-    StatsComponent
+    StatsComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -44,9 +44,8 @@ import { StatsComponent } from './stats/stats.component';
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
-    Ng2SearchPipeModule
+    MatSelectModule
   ],
-  exports:[SearchPipe],
   providers: [UserService,AuthGuard],
   bootstrap: [AppComponent]
 })

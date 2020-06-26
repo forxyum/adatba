@@ -16,8 +16,3 @@ a {
 .form-control::placeholder {
     font-family: FontAwesome;
 }
-
-.form-control {
-    height: 30px;
-    width: 200px;
-}

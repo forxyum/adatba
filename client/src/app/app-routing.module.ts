@@ -13,6 +13,7 @@ import { StatsComponent } from './stats/stats.component';
 
 const routes: Routes = [
   { path: 'home', component: BookListComponent},
+  { path: '', component: BookListComponent},
   { path: 'register', component: UserFormComponent},
   { path: 'login', component: LoginFormComponent},
   { path: 'catalog/:id', component: BookComponent, canActivate : [AuthGuard]},
